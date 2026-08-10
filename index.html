@@ -20,7 +20,483 @@
   }
   [data-mode="graphic"]{
     --accent:#B8862B;
-    --accent-soft:#B8862B1A;
+    --accent-soft:#B8862B1A;<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sergei Melchaev — UX/UI & Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0C;
+    --surface:#141417;
+    --surface-2:#1C1C20;
+    --line:rgba(255,255,255,0.09);
+    --line-strong:rgba(255,255,255,0.16);
+    --text:#F4F3EF;
+    --text-soft:#9C9A93;
+    --accent:#D9A94E;
+    --accent-rgb:217,169,78;
+    --glow: rgba(var(--accent-rgb),0.35);
+  }
+  html[data-theme="light"]{
+    --bg:#FAF9F5;
+    --surface:#F1EFE7;
+    --surface-2:#FFFFFF;
+    --line:rgba(20,18,10,0.10);
+    --line-strong:rgba(20,18,10,0.18);
+    --text:#17150F;
+    --text-soft:#6E6B60;
+    --accent:#B8862B;
+    --accent-rgb:184,134,43;
+    --glow: rgba(var(--accent-rgb),0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    transition:background .4s ease,color .4s ease;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:var(--bg);}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--text-soft);
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+
+  /* ---------- SPOTLIGHT BG ---------- */
+  .spotlight{
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(600px circle at var(--mx,50%) var(--my,20%), var(--glow), transparent 60%);
+    transition:background .1s;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:18px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .mark{font-family:'Manrope',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.01em;}
+  nav{display:flex;align-items:center;gap:26px;}
+  nav a.nav-link{font-size:14px;color:var(--text-soft);transition:color .2s;}
+  nav a.nav-link:hover{color:var(--text);}
+  .theme-toggle{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line-strong);background:var(--surface);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .theme-toggle:hover{border-color:var(--accent);box-shadow:0 0 16px var(--glow);}
+  .theme-toggle svg{width:16px;height:16px;stroke:var(--text);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:110px 0 96px;border-bottom:1px solid var(--line);}
+  .hero .eyebrow{margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+  .hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--glow);}
+  h1{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:clamp(46px,7.5vw,84px);
+    line-height:1.02;
+    letter-spacing:-.03em;
+    max-width:820px;
+  }
+  h1 span{
+    background:linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--text)));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{
+    margin-top:30px;
+    max-width:560px;
+    font-size:17px;
+    color:var(--text-soft);
+  }
+  .hero-meta{
+    margin-top:48px;
+    display:flex;flex-wrap:wrap;gap:14px;
+  }
+  .meta-pill{
+    display:flex;flex-direction:column;gap:4px;
+    padding:12px 18px;border-radius:14px;
+    background:var(--surface);border:1px solid var(--line);
+    transition:border-color .2s, transform .2s;
+  }
+  .meta-pill:hover{border-color:var(--line-strong);transform:translateY(-2px);}
+  .meta-pill .label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-soft);letter-spacing:.06em;text-transform:uppercase;}
+  .meta-pill a, .meta-pill span.val{font-size:13.5px;}
+  .meta-pill a{border-bottom:1px solid transparent;transition:border-color .2s,color .2s;}
+  .meta-pill a:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* ---------- SECTION ---------- */
+  .section{padding:88px 0;border-bottom:1px solid var(--line);}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:52px;gap:24px;flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.01em;
+  }
+  .section-head p{color:var(--text-soft);font-size:14px;max-width:340px;}
+
+  /* ---------- WORK ---------- */
+  .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .project-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    transition:border-color .25s, transform .25s, box-shadow .25s;
+  }
+  .project-card:hover{
+    border-color:var(--line-strong);
+    transform:translateY(-4px);
+    box-shadow:0 16px 40px rgba(0,0,0,.35), 0 0 0 1px var(--glow);
+  }
+  .project-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:14px;display:inline-block;
+  }
+  .project-card h3{font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;margin-bottom:10px;letter-spacing:-.01em;}
+  .project-card p{color:var(--text-soft);font-size:14px;margin-bottom:16px;}
+  .tools-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .tool-chip{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--text-soft);
+    border:1px solid var(--line);padding:3px 10px;border-radius:20px;
+  }
+  .project-link{
+    display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text);
+  }
+  .project-link svg{width:14px;height:14px;transition:transform .2s;}
+  .project-card:hover .project-link svg{transform:translate(3px,-3px);}
+  .todo-badge{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;
+    color:var(--accent);border:1px dashed var(--accent);padding:2px 8px;border-radius:20px;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .skill-col{
+    background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;
+    transition:border-color .25s;
+  }
+  .skill-col:hover{border-color:var(--line-strong);}
+  .skill-col h3{font-family:'Manrope',sans-serif;font-size:19px;font-weight:700;margin-bottom:18px;}
+  .skill-col ul{list-style:none;}
+  .skill-col li{
+    font-size:14.5px;padding:11px 0;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;color:var(--text-soft);
+  }
+  .skill-col li:first-of-type{border-top:none;}
+  .skill-col li span:last-child{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text);}
+  .skill-detail li{display:block;padding:16px 0;border-top:1px solid var(--line);}
+  .skill-detail li:first-of-type{border-top:none;padding-top:0;}
+  .skill-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .skill-row span:first-child{font-size:14.5px;color:var(--text);font-weight:500;}
+  .skill-row .tool{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;}
+  .skill-detail p{font-size:13px;color:var(--text-soft);line-height:1.55;}
+
+  .process-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px;
+  }
+  .process-step{
+    background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 20px;
+    transition:border-color .2s, transform .2s;
+  }
+  .process-step:hover{border-color:var(--line-strong);transform:translateY(-2px);}
+  .process-num{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.06em;
+  }
+  .process-step h4{
+    font-family:'Manrope',sans-serif;font-size:15.5px;font-weight:700;margin:10px 0 6px;letter-spacing:-.01em;
+  }
+  .process-step p{font-size:12.5px;color:var(--text-soft);line-height:1.5;}
+  @media (max-width:760px){
+    .process-row{grid-template-columns:1fr 1fr;}
+  }
+
+  /* ---------- ABOUT / STATS ---------- */
+  .about-strip{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .about-strip p{font-size:16px;color:var(--text-soft);margin-bottom:16px;}
+  .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
+  .stat{
+    padding:20px;border-radius:16px;background:var(--surface);border:1px solid var(--line);
+    transition:border-color .2s, transform .2s;
+  }
+  .stat:hover{border-color:var(--line-strong);transform:translateY(-2px);}
+  .stat b{
+    font-family:'Manrope',sans-serif;font-size:32px;font-weight:800;display:block;
+    color:var(--accent);text-shadow:0 0 24px var(--glow);
+  }
+  .stat span{font-size:12.5px;color:var(--text-soft);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{padding:110px 0;text-align:left;border-bottom:none;}
+  .contact h2{
+    font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(34px,5.6vw,58px);
+    max-width:680px;margin-bottom:44px;letter-spacing:-.02em;
+  }
+  .contact-links{display:flex;flex-wrap:wrap;gap:14px;}
+  .contact-links a{
+    border:1px solid var(--line);padding:14px 22px;border-radius:30px;font-size:14px;
+    display:flex;align-items:center;gap:8px;background:var(--surface);
+    transition:border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .contact-links a:hover{border-color:var(--accent);box-shadow:0 0 20px var(--glow);transform:translateY(-2px);}
+  footer{padding:28px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-soft);}
+
+  @media (max-width:760px){
+    .projects-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    .about-strip{grid-template-columns:1fr;gap:32px;}
+    nav a.nav-link{display:none;}
+    .hero{padding:70px 0 60px;}
+  }
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+    .spotlight{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="spotlight" id="spotlight"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="mark">S. Melchaev</div>
+    <nav>
+      <a class="nav-link" href="#work">Work</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="eyebrow"><span class="dot"></span> Designer · Interfaces & Graphics</div>
+  <h1>Sergei <span>Melchaev</span></h1>
+  <p class="hero-sub">
+    I work across interfaces, websites, visual identity and branding.
+    I've taken commercial projects from first idea to final delivery.
+    Designing since 2022.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-pill"><span class="label">Location</span><span class="val">Kazakhstan · Remote</span></div>
+    <div class="meta-pill"><span class="label">Email</span><a href="mailto:sergeevmgn24@gmail.com">sergeevmgn24@gmail.com</a></div>
+    <div class="meta-pill"><span class="label">Telegram</span><a href="https://t.me/makelinxD" target="_blank" rel="noopener">@makelinxD</a></div>
+    <div class="meta-pill"><span class="label">Instagram</span><a href="https://www.instagram.com/makelinx_design/" target="_blank" rel="noopener">makelinx_design</a></div>
+    <div class="meta-pill"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/sergei-melchaev-739691223/" target="_blank" rel="noopener">sergei-melchaev</a></div>
+  </div>
+</section>
+
+<section class="section wrap reveal" id="work">
+  <div class="section-head">
+    <h2>Selected work</h2>
+    <p>A selection of projects — from product interfaces and web to graphic identity and branding.</p>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-tag">E-commerce · Fashion · 2022</span>
+      <h3>Ireland Resort</h3>
+      <p>IRLAND RESORT — a boho clothing brand for women made from natural fabrics (linen, cotton, silk), with a showroom in Sochi. Online catalog and ordering flow, built on Tilda. <span class="todo-badge">confirm your role</span></p>
+      <div class="tools-row"><span class="tool-chip">Tilda</span><span class="tool-chip">Figma</span></div>
+      <a class="project-link" href="https://irland-resort.ru/" target="_blank" rel="noopener">irland-resort.ru <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M17 7H8M17 7V16" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Travel · Booking · 2023</span>
+      <h3>RDG Tour</h3>
+      <p>RDG Tour (Raduga Tour) — excursion booking site for Marmaris, Turkey: boat trips, paragliding, day tours, transfers, with a WhatsApp-driven booking flow. Built on Tilda. <span class="todo-badge">confirm your role</span></p>
+      <div class="tools-row"><span class="tool-chip">Tilda</span><span class="tool-chip">Illustrator</span></div>
+      <a class="project-link" href="https://rdg-tour.ru/" target="_blank" rel="noopener">rdg-tour.ru <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M17 7H8M17 7V16" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">E-commerce · Fashion · 2024</span>
+      <h3>Mazonkiki</h3>
+      <p><span class="todo-badge">add case study</span> — boutique fashion brand. Describe your role: storefront, product cards, visual direction.</p>
+      <div class="tools-row"><span class="tool-chip">Figma</span><span class="tool-chip">Photoshop</span></div>
+      <a class="project-link" href="https://www.mazonkiki.com/" target="_blank" rel="noopener">mazonkiki.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M17 7H8M17 7V16" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Marketplace · UI · 2025</span>
+      <h3>Seller.on</h3>
+      <p><span class="todo-badge">add case study</span> — tool/interface for marketplace sellers: the task, key screens, before/after.</p>
+      <div class="tools-row"><span class="tool-chip">Figma</span></div>
+      <a class="project-link" href="#">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M17 7H8M17 7V16" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Healthcare · B2B · 2025</span>
+      <h3>PharmCRM IT</h3>
+      <p>A personal cabinet for pharma medical representatives in Kazakhstan (Astana) — daily task tracking, client visits and reporting in one interface. <span class="todo-badge">add case study</span></p>
+      <div class="tools-row"><span class="tool-chip">Figma</span></div>
+      <a class="project-link" href="#">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M17 7H8M17 7V16" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap reveal" id="skills">
+  <div class="section-head">
+    <h2>Skills</h2>
+    <p>What I actually deliver — not just a list of tool names.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-col">
+      <h3>Interfaces & Web</h3>
+      <ul class="skill-detail">
+        <li>
+          <div class="skill-row"><span>UI/UX design</span><span class="tool">Figma</span></div>
+          <p>Wireframes → clickable prototype → production-ready UI, screen by screen, ready to hand off to a developer.</p>
+        </li>
+        <li>
+          <div class="skill-row"><span>Landing pages</span><span class="tool">Tilda</span></div>
+          <p>From brief to a live, responsive page — copy blocks, layout, and publishing included.</p>
+        </li>
+        <li>
+          <div class="skill-row"><span>Prototyping</span><span class="tool">Figma</span></div>
+          <p>Clickable flows you can test with real users before a single line of code is written.</p>
+        </li>
+        <li>
+          <div class="skill-row"><span>Design systems</span><span class="tool">Figma</span></div>
+          <p>Reusable components, a consistent type scale and spacing grid — so the product stays coherent as it grows.</p>
+        </li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h3>Graphic & Brand</h3>
+      <ul class="skill-detail">
+        <li>
+          <div class="skill-row"><span>Visual identity</span><span class="tool">Illustrator</span></div>
+          <p>Logo, color system, type pairing — a base a brand can build on for years, not just a nice-looking mark.</p>
+        </li>
+        <li>
+          <div class="skill-row"><span>Graphic direction</span><span class="tool">Photoshop</span></div>
+          <p>Key visuals and product imagery that carry a consistent look across every touchpoint.</p>
+        </li>
+        <li>
+          <div class="skill-row"><span>Print & vector graphics</span><span class="tool">CorelDRAW</span></div>
+          <p>Packaging, outdoor, POS materials — files delivered print-ready, no back-and-forth with the printer.</p>
+        </li>
+        <li>
+          <div class="skill-row"><span>Social content</span><span class="tool">Photoshop</span></div>
+          <p>Templated post/story systems the client's team can reuse without needing a designer every time.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="process-row">
+    <div class="process-step">
+      <span class="process-num">01</span>
+      <h4>Brief & research</h4>
+      <p>Goals, audience, competitors — before opening Figma.</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">02</span>
+      <h4>Wireframes / concept</h4>
+      <p>Structure and logic locked in first, visuals second.</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">03</span>
+      <h4>Design</h4>
+      <p>UI or visual identity, built on a real design system.</p>
+    </div>
+    <div class="process-step">
+      <span class="process-num">04</span>
+      <h4>Handoff & launch</h4>
+      <p>Dev-ready files, specs, and support through release.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap reveal">
+  <div class="about-strip">
+    <div>
+      <p>Designing since 2022. Working remotely, comfortable owning a project end-to-end — solo or as part of a team, from brief to final delivery.</p>
+      <p>Took part in launching several commercial projects: from the first idea and visual concept to a shipped website or interface.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><b>2022</b><span>started in design</span></div>
+      <div class="stat"><b>5+</b><span>shipped projects</span></div>
+      <div class="stat"><b>2</b><span>disciplines — UI & graphic</span></div>
+      <div class="stat"><b>Remote</b><span>work format</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact wrap reveal" id="contact">
+  <h2>Let's talk about a project — an interface, a website, or a visual identity.</h2>
+  <div class="contact-links">
+    <a href="mailto:sergeevmgn24@gmail.com">✉ sergeevmgn24@gmail.com</a>
+    <a href="https://t.me/makelinxD" target="_blank" rel="noopener">Telegram · @makelinxD</a>
+    <a href="https://www.instagram.com/makelinx_design/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/sergei-melchaev-739691223/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+
+<footer>© 2026 Sergei Melchaev · Interface & Graphic Design</footer>
+
+<script>
+  const spotlight = document.getElementById('spotlight');
+  window.addEventListener('mousemove', (e)=>{
+    spotlight.style.setProperty('--mx', e.clientX + 'px');
+    spotlight.style.setProperty('--my', e.clientY + 'px');
+  });
+
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const iconMoon = document.getElementById('iconMoon');
+  const sunPath = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+  const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>';
+
+  toggle.addEventListener('click', ()=>{
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    iconMoon.innerHTML = isDark ? sunPath : moonPath;
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
+
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
