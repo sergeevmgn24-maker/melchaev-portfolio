@@ -88,7 +88,12 @@
 
   /* ---------- HERO ---------- */
   .hero{padding:110px 0 96px;border-bottom:1px solid var(--line);}
-  .hero .eyebrow{margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+  .hero-top{display:flex;align-items:center;gap:24px;margin-bottom:24px;}
+  .avatar{
+    width:88px;height:88px;border-radius:50%;object-fit:cover;flex-shrink:0;
+    border:2px solid var(--accent);box-shadow:0 0 28px var(--glow);
+  }
+  .hero .eyebrow{margin-bottom:0;display:flex;align-items:center;gap:10px;}
   .hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--glow);}
   h1{
     font-family:'Manrope',sans-serif;
@@ -254,6 +259,8 @@
     .about-strip{grid-template-columns:1fr;gap:32px;}
     nav a.nav-link{display:none;}
     .hero{padding:64px 0 52px;}
+    .hero-top{gap:16px;}
+    .avatar{width:64px;height:64px;}
     .header-inner{padding:14px 20px;}
     .wrap{padding:0 20px;}
     .hero-meta{gap:10px;}
@@ -317,8 +324,13 @@
 </header>
 
 <section class="hero wrap">
-  <div class="eyebrow"><span class="dot"></span> Designer · Interfaces & Graphics</div>
-  <h1>Sergei <span>Melchaev</span></h1>
+  <div class="hero-top">
+    <img src="photo.jpg" alt="Sergei Melchaev" class="avatar" onerror="this.style.display='none'">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Designer · Interfaces & Graphics</div>
+      <h1>Sergei <span>Melchaev</span></h1>
+    </div>
+  </div>
   <p class="hero-sub">
     I work across interfaces, websites, visual identity and branding.
     I've taken commercial projects from first idea to final delivery.
